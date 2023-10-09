@@ -55,3 +55,44 @@ function createProductElement() {
 
 createProductElement();
 
+function showSlidess(n: number) {
+  let i;
+  let slides: any = document.getElementsByClassName("product--container")!; //slider containes the products created by createProductElement
+  if (partialData != null) {  //typescript error partial data can  be null
+    if (n > partialData.length) {
+      slideIndex = 1;
+    }
+    if (n < 1) {
+      slideIndex = partialData.length;
+    }
+
+    for (i = 0; i < partialData.length; i++) {
+      slides[i].style.display = " none";
+    }
+
+    
+
+    slides[slideIndex - 1].style.display = " block";
+  }
+}
+
+showSlidess(slideIndex);
+
+const nextButton = document.getElementById('nextButton');
+const prevButton =document.getElementById('prevButton');
+
+
+function currentSlide(n: number) {
+  showSlidess((slideIndex = n));
+}
+
+nextButton?.addEventListener("click", () => {
+  showSlidess((slideIndex += 1));
+});
+
+prevButton?.addEventListener("click", () => {
+  showSlidess((slideIndex += -1));
+});
+
+
+

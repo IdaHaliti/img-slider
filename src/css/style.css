@@ -73,4 +73,17 @@ body {
   background-color: white;
 }
 
+@media only screen and (max-width: 600px) {
+  .buttons {
+    display: none;
+  }
+  #navigations--container {
+    align-items: center;
+    justify-content: space-between;
+  }
+  .product__thumbnail {
+    object-fit: cover;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

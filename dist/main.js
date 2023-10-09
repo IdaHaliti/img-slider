@@ -32,5 +32,33 @@ function createProductElement() {
     }
 }
 createProductElement();
+function showSlidess(n) {
+    let i;
+    let slides = document.getElementsByClassName("product--container");
+    if (partialData != null) {
+        if (n > partialData.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = partialData.length;
+        }
+        for (i = 0; i < partialData.length; i++) {
+            slides[i].style.display = " none";
+        }
+        slides[slideIndex - 1].style.display = " block";
+    }
+}
+showSlidess(slideIndex);
+const nextButton = document.getElementById('nextButton');
+const prevButton = document.getElementById('prevButton');
+function currentSlide(n) {
+    showSlidess((slideIndex = n));
+}
+nextButton === null || nextButton === void 0 ? void 0 : nextButton.addEventListener("click", () => {
+    showSlidess((slideIndex += 1));
+});
+prevButton === null || prevButton === void 0 ? void 0 : prevButton.addEventListener("click", () => {
+    showSlidess((slideIndex += -1));
+});
 export {};
 //# sourceMappingURL=main.js.map
