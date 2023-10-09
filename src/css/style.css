@@ -4,17 +4,16 @@ body {
 
 #main-container {
   display: flex;
-  overflow: auto;
 }
 
 .product--container {
   width: 100%;
-  height: 35rem;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  background: rgb(0, 0, 0);
+  background: #000000;
 }
 
 .product__thumbnail {
@@ -41,7 +40,8 @@ body {
   align-items: center;
 }
 
-#nextButton, #prevButton {
+#nextButton,
+#prevButton {
   cursor: pointer;
   border: none;
   background: transparent;
@@ -52,7 +52,8 @@ body {
   margin: 12px;
 }
 
-#nextButton:hover, #prevButton:hover {
+#nextButton:hover,
+#prevButton:hover {
   transition: color 0.5s ease;
   color: white;
 }
@@ -61,16 +62,34 @@ body {
   cursor: pointer;
   display: inline-block;
   background-color: rgb(167, 167, 167);
-  width: 90px;
-  height: 4px;
+  width: 130px;
+  height: 3px;
   border-radius: 2px;
   margin: 5px;
+  margin: 0 10px;
   transition: background-color 0.5s ease;
-  margin: 4px;
 }
 
-.span--active, span:hover {
+.span--active,
+span:hover {
   background-color: white;
+}
+
+@media only screen and (max-width: 760px) {
+  button {
+    display: none;
+  }
+  .lines {
+    margin-bottom: 10px;
+  }
+  .span__lines {
+    width: 74px;
+    height: 5px;
+    margin: 0 6px;
+  }
+  .product__thumbnail {
+    object-fit: cover;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
