@@ -58,6 +58,7 @@ createProductElement();
 function showSlidess(n: number) {
   let i;
   let slides: any = document.getElementsByClassName("product--container")!; //slider containes the products created by createProductElement
+  let lines: any = document.querySelector(".lines")!; // contains lines.children[]
   if (partialData != null) {  //typescript error partial data can  be null
     if (n > partialData.length) {
       slideIndex = 1;
@@ -70,9 +71,15 @@ function showSlidess(n: number) {
       slides[i].style.display = " none";
     }
 
-    
+    for (i = 0; i < lines.children.length; i++) {
+      lines.children[i].className = lines.children[i].className.replace(
+        " span--active",
+        ""
+      );
+    }
 
     slides[slideIndex - 1].style.display = " block";
+    lines.children[slideIndex - 1].className += " span--active";
   }
 }
 

@@ -35,6 +35,7 @@ createProductElement();
 function showSlidess(n) {
     let i;
     let slides = document.getElementsByClassName("product--container");
+    let lines = document.querySelector(".lines");
     if (partialData != null) {
         if (n > partialData.length) {
             slideIndex = 1;
@@ -45,7 +46,11 @@ function showSlidess(n) {
         for (i = 0; i < partialData.length; i++) {
             slides[i].style.display = " none";
         }
+        for (i = 0; i < lines.children.length; i++) {
+            lines.children[i].className = lines.children[i].className.replace(" span--active", "");
+        }
         slides[slideIndex - 1].style.display = " block";
+        lines.children[slideIndex - 1].className += " span--active";
     }
 }
 showSlidess(slideIndex);
