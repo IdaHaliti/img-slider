@@ -4,6 +4,8 @@ const partialData: Product[] | null = firstFourroducts(data);
 const main = document.querySelector<HTMLDivElement>("#main-container");
 let slideIndex = 1;
 
+
+//fetchting data from dummyjson
 async function fetchData(): Promise<Product[] | null> {
   try {
     const response = await fetch(dataUrl);
@@ -16,6 +18,7 @@ async function fetchData(): Promise<Product[] | null> {
   }
 }
 
+//get first four products from the returned dummyjson array
 export function firstFourroducts(importedData: Product[] | null) {
   if (importedData != null) {
     return importedData.slice(0, 4);
@@ -24,6 +27,9 @@ export function firstFourroducts(importedData: Product[] | null) {
   }
 }
 
+
+
+//create a html div container for each of the 4 products
 function createProductElement() {
   for (let i = 0; i < 4; i++) {
     main!.innerHTML += `<div class="product--container">
@@ -34,6 +40,7 @@ function createProductElement() {
   }
 }
 
+//display products and cta buttons with the current slide index
 function showSlidess(n: number) {
   let i;
   let slides: any = document.getElementsByClassName("product--container")!; //slider containes the products created by createProductElement
@@ -66,6 +73,8 @@ function showSlidess(n: number) {
 createProductElement();
 showSlidess(slideIndex);
 
+
+//navigate slides with CTA buttons
 function currentSlide(n: number) {
   showSlidess((slideIndex = n));
 }
@@ -82,6 +91,8 @@ document.getElementById("span-line-3")?.addEventListener('click', ()=> {
 document.getElementById("span-line-4")?.addEventListener('click', ()=> {
   currentSlide(4)
 })
+
+//navigate slides with arrows
 const nextButton = document.getElementById("nextButton");
 const prevButton = document.getElementById("prevButton");
 
@@ -92,6 +103,8 @@ prevButton?.addEventListener("click", () => {
   showSlidess((slideIndex += -1));
 });
 
+
+//the interface for the product
 export interface Product {
   id: number;
   title: string;
