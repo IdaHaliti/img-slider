@@ -1,3 +1,13 @@
 body {
-    background-color: pink;
+  margin: 0;
+}
+
+#main-container {
+  display: flex;
+  overflow: auto;
+}
+
+.image--container {
+  width: 100%;
+  min-width: 100%;
 }
