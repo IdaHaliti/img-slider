@@ -1,18 +1,8 @@
-export interface Product {
-  id: number;
-  title: string;
-  description: string;
-  brand: string;
-  category: string;
-  discountPercentage: number;
-  images: string[];
-  price: string;
-  rating: number;
-  stock: number;
-  thumbnail: string;
-}
-
 const dataUrl = "https://dummyjson.com/products";
+const data: Product[] | null = await fetchData();
+const partialData: Product[] | null = firstFourroducts(data);
+const main = document.querySelector<HTMLDivElement>("#main-container");
+let slideIndex = 1;
 
 async function fetchData(): Promise<Product[] | null> {
   try {
@@ -26,22 +16,13 @@ async function fetchData(): Promise<Product[] | null> {
   }
 }
 
-const data: Product[] | null = await fetchData();
-console.log(data);
-const partialData: Product[] | null = firstFourroducts(data);
-console.log(partialData);
-
-function firstFourroducts(importedData: Product[] | null) {
+export function firstFourroducts(importedData: Product[] | null) {
   if (importedData != null) {
     return importedData.slice(0, 4);
   } else {
     return null;
   }
 }
-
-let slideIndex = 1;
-
-const main = document.querySelector<HTMLDivElement>("#main-container");
 
 function createProductElement() {
   for (let i = 0; i < 4; i++) {
@@ -53,13 +34,12 @@ function createProductElement() {
   }
 }
 
-createProductElement();
-
 function showSlidess(n: number) {
   let i;
   let slides: any = document.getElementsByClassName("product--container")!; //slider containes the products created by createProductElement
   let lines: any = document.querySelector(".lines")!; // contains lines.children[]
-  if (partialData != null) {  //typescript error partial data can  be null
+  if (partialData != null) {
+    //typescript error partial data can  be null
     if (n > partialData.length) {
       slideIndex = 1;
     }
@@ -83,23 +63,45 @@ function showSlidess(n: number) {
   }
 }
 
+createProductElement();
 showSlidess(slideIndex);
-
-const nextButton = document.getElementById('nextButton');
-const prevButton =document.getElementById('prevButton');
-
 
 function currentSlide(n: number) {
   showSlidess((slideIndex = n));
 }
 
+document.getElementById("span-line-1")?.addEventListener('click', ()=> {
+  currentSlide(1)
+})
+document.getElementById("span-line-2")?.addEventListener('click', ()=> {
+  currentSlide(2)
+})
+document.getElementById("span-line-3")?.addEventListener('click', ()=> {
+  currentSlide(3)
+})
+document.getElementById("span-line-4")?.addEventListener('click', ()=> {
+  currentSlide(4)
+})
+const nextButton = document.getElementById("nextButton");
+const prevButton = document.getElementById("prevButton");
+
 nextButton?.addEventListener("click", () => {
   showSlidess((slideIndex += 1));
 });
-
 prevButton?.addEventListener("click", () => {
   showSlidess((slideIndex += -1));
 });
 
-
-
+export interface Product {
+  id: number;
+  title: string;
+  description: string;
+  brand: string;
+  category: string;
+  discountPercentage: number;
+  images: string[];
+  price: string;
+  rating: number;
+  stock: number;
+  thumbnail: string;
+}
