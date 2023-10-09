@@ -26,8 +26,20 @@ export function firstFourroducts(importedData) {
 function createProductElement() {
     for (let i = 0; i < 4; i++) {
         main.innerHTML += `<div class="product--container">
-        <img class="product__thumbnail" src="${partialData && partialData[i].thumbnail}" alt="${partialData && partialData[i].brand}">
-      </div>`;
+        <img class="product__thumbnail" src="${partialData && partialData[i].thumbnail}" alt="${partialData && partialData[i].brand}">       
+      
+      <div class="padded-main">
+        <div class="product__information">
+        <div class="product__information__text">
+          <h2>${partialData && partialData[i].title}</h2>
+          <h3>${partialData && partialData[i].price}$</h3>
+          <p>${partialData && partialData[i].description}</p>
+        </div>
+        <div class="contact-buttons">
+        <button id="button-blue">Mehr Erfahren &#10095;</button>
+        <button id="button-transparent">Kontakt</button>
+        </div>
+        </div>`;
     }
 }
 function showSlidess(n) {
@@ -56,16 +68,16 @@ showSlidess(slideIndex);
 function currentSlide(n) {
     showSlidess((slideIndex = n));
 }
-(_a = document.getElementById("span-line-1")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
+(_a = document.getElementById("span-line-1")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
     currentSlide(1);
 });
-(_b = document.getElementById("span-line-2")) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
+(_b = document.getElementById("span-line-2")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => {
     currentSlide(2);
 });
-(_c = document.getElementById("span-line-3")) === null || _c === void 0 ? void 0 : _c.addEventListener('click', () => {
+(_c = document.getElementById("span-line-3")) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
     currentSlide(3);
 });
-(_d = document.getElementById("span-line-4")) === null || _d === void 0 ? void 0 : _d.addEventListener('click', () => {
+(_d = document.getElementById("span-line-4")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => {
     currentSlide(4);
 });
 const nextButton = document.getElementById("nextButton");
