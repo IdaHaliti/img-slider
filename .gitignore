@@ -2,4 +2,3 @@
 dist
 dist-ssr
 .vscode/*
-package-lock.json
