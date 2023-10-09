@@ -35,7 +35,7 @@ const main = document.querySelector<HTMLDivElement>('#main-container')
 
 for (let i = 0; i < 5; i++) {
     main!.innerHTML += 
-    `<div class="image--container">
-        <img class="image__thumbnail" src="${data && data[i].thumbnail}" alt="${data && data[i].brand}">
+    `<div class="product--container">
+        <img class="product__thumbnail" src="${data && data[i].thumbnail}" alt="${data && data[i].brand}">
       </div>`
 }
