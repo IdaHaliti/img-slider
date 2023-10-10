@@ -54,16 +54,22 @@ body {
 }
 
 .product__information__text {
-  display: flex;
   flex-direction: column;
 }
 
 .product__information__text {
-  h2 {
+  h1{
     font-size: 52px;
+  }
+  h2 {
+    font-size: 45px;
+  }
+  h3{
+    font-size: 30px;
   }
   p {
     font-size: 26px;
+    line-height: initial;
   }
 }
 
@@ -158,12 +164,12 @@ span:hover {
 }
 
 @media only screen and (max-width: 760px) {
-  button {
+  .buttons {
     display: none;
   }
 
   .lines {
-    margin-bottom: 10px;
+    margin-bottom: inherit;
   }
 
   .span__lines {
@@ -177,9 +183,12 @@ span:hover {
   }
   .product__information{
     margin: 0;
-    line-height: 20px;
+    line-height: 8px;
   }
-  .product__information__text{
-    line-height: 28px;
+
+  .product__information__text {
+    h1 {
+      font-size: 48px;
+    }
   }
 }
